@@ -8,9 +8,25 @@ async function getRecipes(){
     
     
 }
-export{getRecipes};
+
+
+ async function rechercherRecettes(motCle){
+   try{const response= await api.get("/recipes/search",{
+    params :{
+        q:motCle,
+       
+    }
+   });
+   return response.data;
+
+   }catch(error){
+    console.error(error);
+    
+   }
+    
+}
+
+
+
+export{getRecipes,rechercherRecettes};
 export default api;
-
-
-
-
