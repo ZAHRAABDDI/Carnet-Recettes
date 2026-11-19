@@ -1,11 +1,28 @@
 
 const listeRecettes = document.getElementById("liste-recettes");
 const compteur = document.querySelector("#compteur");
-compteur.className = "bg-orange-600 text-white font-bold text-sm px-4 py-2 rounded-lg";
+ compteur.className = "bg-orange-600 text-white font-bold text-sm px-4 py-2 rounded-lg";
  
 
 function afficherRecettes(recettes) {
+    listeRecettes.innerHTML = "";
+
     compteur.textContent = `${recettes.length} Recettes`;
+
+        if(recettes.length===0){
+            const message =document.createElement("p")
+            message.textContent="aucune recette trouvée";
+            message.className = "col-span-full text-center text-gray-600 text-lg font-semibold mb-4";
+            listeRecettes.appendChild(message)
+
+            const button =document.createElement("button")
+            button.textContent="voir tous les recettes";
+            button.id = "btn-toutes-recettes";
+            button.className = "col-span-full block mx-auto w-fit bg-orange-600 text-white px-5 py-2 rounded-lg hover:bg-orange-700 transition";
+            listeRecettes.appendChild(button)
+            return;
+
+        }
     recettes.forEach((recette) => {
 
         const carte = document.createElement("div");
